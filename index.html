@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Quoting Tool</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="css/bootstrap.min.css"></link>
+<link rel="stylesheet" href="css/custom.css"></link>
+
+<link rel="shortcut icon" href="img/favicon.ico">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="img/favicon.ico">
+    <img src="img/favicon.ico" width="25" height="25" class="d-inline-block align-middle" alt="">
+    Quoting Tool
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="labor.html">Labor</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="material.html">Material</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="overhead.html">Overhead</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="sna.html">Sales and Administative</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<body>
+    
+<div class="d-flex align-content-start flex-wrap">
+<form class="order-1 needs-validation border" style="max-width: 1000px; margin: 5px; padding: 20px;" novalidate>
+  <div class="form-row">
+    <h4 class="text-muted">Product Information</h4>
+  </div>
+  <div class="form-row">
+    <div class="col-md-2 mb-3">
+      <label for="id">Quote Number</label>
+      <input type="text" class="form-control" id="id" placeholder="1001" required>
+      <div class="invalid-tooltip">
+        no good
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Awesome dining chair" required>
+      <div class="invalid-tooltip">
+        no good
+      </div>
+    </div>
+    <div class="col-md-1 mb-3">
+      <label for="qty">Quantity</label>
+        <input type="number" value="1" min="1" step="1" data-number-to-fixed="0" data-number-stepfactor="100" class="form-control currency" id="qty" style="text-align: center;" required>
+        <div class="invalid-tooltip">
+          no good
+        </div>
+    </div>
+    <div class="col-md-2 mb-3">
+      <label for="marketprice">Market Price</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="MarketPriceDollar">$</span>
+        </div>
+        <input type="number" value="1.00" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="marketprice" style="text-align: center;" required>
+        <div class="invalid-tooltip">
+          no good
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="category">Category</label>
+      <select type="text" class="custom-select custom-select-md" id="category" placeholder="Dining Chair" required>
+        <option>1</option>
+      </select>
+      <div class="invalid-tooltip">
+        no good
+      </div>
+    </div>
+  </div>
+    <div class="form-row">
+    <div class="col-md-12 mb-3">
+      <label for="desc">Description</label>
+      <input type="text" class="form-control" id="desc" placeholder="Black leather | Rift Oak base" required>
+      <div class="invalid-tooltip">
+        No good
+      </div>
+    </div>
+  </div>
+    </form>
+    <div class="form-row ml-2 mt-5">
+    <button class="btn btn-primary hidden-print m-1" onclick="print();">Print</button>
+     <button class="btn btn-primary hidden-print m-1" id = "b1" onClick="insert_value()">Insert</button>
+     <button class="btn btn-primary hidden-print m-1" onclick="read_value();">Read</button>
+     <button class="btn btn-primary hidden-print m-1" onclick="update_value();">Update</button>
+     <button class="btn btn-primary hidden-print m-1" onclick="delete_value();">Delete</button>
+     <a class="m-1"href="https://docs.google.com/spreadsheets/d/18SWwjFe_JbflrvUTayeHhxDEf4pwLD3akDfiUUntEvU/edit?usp=sharing" target="_blank">Spread Sheet</a>
+     <div class="m-1" id="loader"></div><p class="m-1"id="re"></p>
+    </div>
+
+
+<div class="order-2 list-inline-item border border-seconday " style="max-width: 460px; min-width: 260px; margin: 5px; padding: 20px;" novalidate>
+    <h4 class="text-muted">Summary</h4> 
+  <ul class="list-inline text-right">
+    
+     <li class="list-inline-item">Labor</li>
+     <div class="list-inline-item" id="totalLabor" value="0.00"><i>$ </i>0.00</div>
+  </ul>
+  <ul class="list-inline text-right">
+    <li class="list-inline-item">Material</li>
+    <div class="list-inline-item" id="totalMaterial" value="0.00"><i>$ </i>0.00</div>
+  </ul>
+  <ul class="list-inline text-right">
+    <li class="list-inline-item">Overhead</li>
+    <div class="list-inline-item" id="totaloverhead" value="0.00"><i>$ </i>0.00</div>
+  </ul>
+  <ul class="list-inline text-right">
+     <li class="list-inline-item">Sales and Administrative</li>
+     <div class="list-inline-item" id="totalSnA" value="0.00"><i>$ </i>0.00</div>
+  </ul>
+  
+  
+  <ul class="list-inline text-right">
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text  text-right" id="marginP">%</span>
+          <input type="number" value="15" min="0" step="1" data-number-to-fixed="2" data-number-stepfactor="1" class="list-inline-item w-25" id="marginp" style="text-align: center;" required>
+      </div>
+          <li class="list-inline-item text-right">Margin</li>
+      <div class="list-inline-item" id="totalMargin" value="0.00"><i>$ </i>0.00</div>
+  </ul>
+</div>
+
+<div class="order-3 table table-sm table hover border border-seconday " id="showData" style="overflow: auto; max-height:  300px; margin: 5px; padding: 20px;">  
+</div>
+
+</body>
+
+<!--Footer-->
+		<footer class="fixed-bottom">
+			<hr>
+			<span class="fixed-bottom p-1 bg-light">&copy; Pascal Rimann 2018</span>
+		</footer>
+
+<script src="js/bootstrap.js"></script>
+<script src="js/calculator.js"></script>
+<script src="js/tabletop.min.js"></script>
+<script src="js/google.sheets.js"></script>
+<script src="js/custom.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+</html>
