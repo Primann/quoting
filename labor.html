@@ -1,0 +1,115 @@
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+<title>Quoting Tool</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="css/bootstrap.min.css"></link>
+<link rel="stylesheet" href="css/custom.css"></link>
+
+<link rel="shortcut icon" href="img/favicon.ico">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="img/favicon.ico">
+    <img src="img/favicon.ico" width="25" height="25" class="d-inline-block align-middle" alt="">
+    Quoting Tool
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="labor.html">Labor<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="material.html">Material</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="overhead.html">Overhead</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="sna.html">Sales and Administative</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<!-- labor table-->
+<body>
+<ul class="order-2 form-row border border-seconday" style="margin: 5px; padding: 20px;">
+  <h4 class="text-muted">Labor</h4>
+  <div class="inline" id="totalL"></div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Department</th>
+        <th>Production Hours</th>
+        <th>Labor rate ($/hr)</th>
+        <th>Number of workers</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Carpentry</td>
+        <td><input id="cHours" value="1" size="6" style="text-align: center; border: hidden" onchange="calcsum();"></input></td>
+        <td>
+         <input id="cCostHour"  size="6" style="text-align: center; border: hidden" onchange="calcsum();" value="30.00"></input></td>
+        <td><input id="cWorker"  size="6" style="text-align: center; border: hidden" onchange="calcsum();" value="1"></input></td>
+        <td><div id="cTotal"></div></td>
+      </tr>
+      <tr>
+        <td>Sanding</td>
+        <td><input id="sHours" value="1" size="6" style="text-align: center; border: hidden" onchange="calcsum();"></input></td>
+        <td><input id="sCostHour"  size="6" style="text-align: center; border: hidden" onchange="calcsum();" value="30.00"></input></td>
+        <td><input id="sWorker"  size="6" style="text-align: center; border: hidden" onchange="calcsum();" value="1"></input></td>
+        <td><div id="sTotal"></div></td>
+      </tr>
+      <tr>
+        <td>Finishing</td>
+      </tr>
+      <tr>
+        <td>Upholstery</td>
+      </tr>
+      <tr>
+        <td>Final Assembly</td>
+      </tr>
+      <tr>
+        <td>Shipping</td>
+      </tr>
+      <tr>
+        <td>Metal Work Cell</td>
+      </tr>
+      <tr>
+        <td><input placeholder="Department Name"></input></td>
+      </tr>
+
+    </tbody>
+  </table>
+</ul>
+</body>
+
+<!--Footer-->
+		<footer class="fixed-bottom">
+			<hr>
+			<span class="fixed-bottom p-1 bg-light">&copy; Pascal Rimann 2018</span>
+		</footer>
+
+<script src="js/bootstrap.js"></script>
+<script src="js/calculator.js"></script>
+<script src="js/tabletop.min.js"></script>
+
+</html>
